@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cartography of Souls</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <svg id="map-sketch" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <path id="path1" d="M 0 120 C 150 100, 250 120, 300 150 C 350 180, 450 130, 400 100 C 350 70, 450 150, 500 200 C 550 250, 650 200, 700 150 C 750 100, 850 220, 800 220" />
+        <path id="path2" d="M 0 200 C 125 250, 175 280, 150 300 C 125 320, 175 350, 250 350 C 325 350, 275 280, 350 350 C 375 325, 425 325, 450 350 C 525 300, 575 500, 650 500 C 675 475, 725 475, 800 500" />
+        <path id="path3" d="M 0 530 C 125 510, 225 550, 250 580 C 275 610, 375 560, 350 530 C 325 500, 425 580, 450 630 C 525 680, 625 630, 650 580 C 675 530, 775 630, 800 630" />
+    </svg>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="container">
+        <div class="piece" id="lake" data-link="lake.html" data-color="#92c5d3">
+            <div class="photo-block">
+                <img src="assets/lake1.png" alt="Lake" class="front-image">
+                <img src="assets/lake.png" alt="Lake Hover" class="back-image">
+            </div>
+        </div>
+
+        <div class="piece" id="forest" data-link="forest.html" data-color="#7ea97e">
+            <div class="photo-block">
+                <img src="assets/forest1.png" alt="Forest" class="front-image">
+                <img src="assets/forest.png" alt="Forest Hover" class="back-image">
+            </div>
+        </div>
+
+        <div class="piece" id="mountain" data-link="mountain.html" data-color="#a6b7c8">
+            <div class="photo-block">
+                <img src="assets/mountain1.png" alt="Mountain" class="front-image">
+                <img src="assets/mountain.png" alt="Mountain Hover" class="back-image">
+            </div>
+        </div>
+
+        <div class="piece" id="desert" data-link="desert.html" data-color="#d7b377">
+            <div class="photo-block">
+                <img src="assets/desert1.png" alt="Desert" class="front-image">
+                <img src="assets/desert.png" alt="Desert Hover" class="back-image">
+            </div>
+        </div>
+    </div>
+
+    <div class="about-container">
+        <a href="#" class="about-link">About</a>
+        <div class="about-description">
+            <p>
+                This project is an immersive web based on the experience of literary reading.
+                <br>By binding four writers from different cultural contexts to specific "landscape images",
+                it constructs a spiritual geographical map.
+            </p>
+        </div>
+    </div>
+    <div class="site-title">A Cartography of Souls</div>
+    <script src="script.js"></script>
+</body>
+</html>

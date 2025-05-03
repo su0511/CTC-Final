@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siddhartha - Middle Stream</title>
+
+  <!-- Google Fonts: EB Garamond -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'EB Garamond', serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(120deg, hsl(30, 60%, 20%), hsl(10, 40%, 10%));
+      background-size: 400% 400%;
+      animation: riverFlow 20s ease-in-out infinite;
+      color: #f3e7dc;
+    }
+
+    .content {
+      width: 60%;
+      line-height: 2.2;
+      font-size: 1.4em;
+    }
+
+    .content span {
+      transition: 5s;
+      display: inline-block;
+    }
+
+    .content span:hover {
+      transition: 0s;
+      transform: rotate(180deg);
+    }
+
+    @keyframes riverFlow {
+      0% {
+        background-position: 0% 50%;
+        background: linear-gradient(120deg, hsl(30, 60%, 20%), hsl(10, 40%, 10%));
+      }
+      25% {
+        background-position: 50% 50%;
+        background: linear-gradient(120deg, hsl(20, 40%, 15%), hsl(5, 50%, 20%));
+      }
+      50% {
+        background-position: 100% 50%;
+        background: linear-gradient(120deg, hsl(25, 50%, 25%), hsl(8, 30%, 10%));
+      }
+      75% {
+        background-position: 50% 50%;
+        background: linear-gradient(120deg, hsl(18, 60%, 18%), hsl(5, 40%, 15%));
+      }
+      100% {
+        background-position: 0% 50%;
+        background: linear-gradient(120deg, hsl(30, 60%, 20%), hsl(10, 40%, 10%));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <span>Desire is a chain around the neck.</span>
+    <span>Gold shone in his dreams and clouded his soul.</span>
+    <span>Soft laughter drew him deeper into the maze.</span>
+    <span>The fragrance of wealth dulled the river’s whisper.</span>
+    <span>Greedy hands gathered illusions.</span>
+    <span>He forgot the songs of birds and the stars’ embrace.</span>
+    <span>His smile became hollow, his heart a closed jar.</span>
+    <span>Wandering between silken beds and golden coins.</span>
+    <span>Each pleasure consumed, another thirst awakened.</span>
+    <span>The river was lost behind walls of noise.</span>
+    <span>He sold his peace for games and silk robes.</span>
+    <span>The taste of wine dulled the voice of awakening.</span>
+    <span>He who sought freedom became the most bound.</span>
+    <span>Days passed in golden blindness.</span>
+    <span>The boy who loved trees now bartered lives.</span>
+    <span>His dreams bled dry under velvet nights.</span>
+    <span>The river, once near, now faded into silence.</span>
+    <span>In the depths of pleasure, he drowned unseen.</span>
+    <span>Despair clung to his shadow like a second skin.</span>
+    <span>The river waited patiently, speaking only to silence.</span>
+  </div>
+</body>
+</html>

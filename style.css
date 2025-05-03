@@ -1,0 +1,183 @@
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #e2e4e6;
+  overflow: hidden; /* Prevent scrollbars */
+  font-family: 'EB Garamond', serif;
+}
+
+/* SVG Styles */
+#map-sketch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* Important:  Prevents SVG from intercepting clicks */
+  z-index: -1;          /* Place behind everything else */
+  transform: translate(0, -100px); /* Move the SVG */
+}
+
+#map-sketch path {
+  stroke: rgba(150, 150, 150, 0.5);
+  stroke-width: 2px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  transform-origin: 0 0;
+  transform: rotate(5deg);
+}
+
+/* Canvas Styles */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* Ensure canvas doesn't block clicks either */
+  z-index: 0;
+}
+
+/* Container Styles */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  height: 90vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -78%);
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.piece {
+  width: 48%;
+  height: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.piece:nth-child(2n) {
+  justify-content: flex-start;
+}
+
+.photo-block {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.photo-block img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.front-image {
+  opacity: 1;
+  z-index: 2;
+}
+
+.back-image {
+  opacity: 0;
+  z-index: 1;
+}
+
+
+.photo-block:hover .front-image {
+  opacity: 0;
+}
+
+.photo-block:hover .back-image {
+  opacity: 1;
+}
+
+/* About Container Styles */
+.about-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3;
+}
+
+.about-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2em;
+  position: relative;
+  transition: color 0.3s ease, text-decoration 0.3s ease, font-style 0.3s ease, opacity 0.3s ease;
+}
+
+.about-link:hover {
+  color: #888;
+  text-decoration: underline;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.about-description {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  bottom: 30px;
+  left: -10px;
+  width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.about-link:hover + .about-description {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Site Title Styles */
+.site-title {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.2em;
+  color: #333;
+  z-index: 3;
+  text-decoration: none;
+  font-style: normal;
+  opacity: 1;
+  transition: text-decoration 0.3s ease, font-style 0.3s ease, opacity 0.3s ease;
+}
+
+.site-title:hover {
+  text-decoration: underline;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

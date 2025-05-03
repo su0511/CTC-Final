@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hesse's Mirror</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'EB Garamond', serif;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      z-index: 0;
+    }
+
+    .text-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .fragment {
+      position: absolute;
+      font-size: 1.1rem;
+      padding: 0.8rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .fragment.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="text-layer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
+  <script>
+    let shards = [];
+    const texts = [
+      "Some of us think holding on makes us strong, but sometimes it is letting go.",
+      "Words do not express thoughts very well. They always become a little different immediately after they are expressed.",
+      "Within you there is a stillness and a sanctuary to which you can retreat at any time and be yourself."
+    ];
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      noFill();
+      stroke(255, 30);
+      let textLayer = document.querySelector('.text-layer');
+      for (let i = 0; i < texts.length; i++) {
+        let shard = {
+          x: random(width),
+          y: random(height),
+          baseY: 0, // for floating
+          r: random(60, 100),
+          hovered: false,
+          offset: random(1000),
+          fragment: document.createElement('div')
+        };
+        shard.fragment.classList.add('fragment');
+        shard.fragment.innerText = texts[i];
+        textLayer.appendChild(shard.fragment);
+        shards.push(shard);
+      }
+    }
+
+    function draw() {
+      clear();
+      let t = millis() / 1000;
+      for (let s of shards) {
+        s.baseY = 15 * sin(t * 1.5 + s.offset);
+        strokeWeight(s.hovered ? 2 : 0.5);
+        if (s.hovered) {
+          stroke(255, 80);
+          fill(255, 20);
+        } else {
+          noFill();
+          stroke(255, 30);
+        }
+        ellipse(s.x, s.y + s.baseY, s.r);
+
+        // Update fragment position and visibility
+        s.fragment.style.left = (s.x + 20) + 'px';
+        s.fragment.style.top = (s.y + s.baseY - 10) + 'px';
+        if (s.hovered) {
+          s.fragment.classList.add('visible');
+        } else {
+          s.fragment.classList.remove('visible');
+        }
+      }
+    }
+
+    function mouseMoved() {
+      for (let s of shards) {
+        const d = dist(mouseX, mouseY, s.x, s.y + s.baseY);
+        s.hovered = d < s.r / 2;
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+  </script>
+</body>
+</html>

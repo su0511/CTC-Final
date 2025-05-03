@@ -1,65 +1,68 @@
-/* Reset some default styles */
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   background: #e2e4e6;
-  overflow: hidden; /* Prevent scrollbars */
+  overflow: hidden;
   font-family: 'EB Garamond', serif;
 }
 
-/* SVG Styles */
-#map-sketch {
+#svg-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;  /* Important:  Prevents SVG from intercepting clicks */
-  z-index: -1;          /* Place behind everything else */
-  transform: translate(0, -100px); /* Move the SVG */
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(0, -100px);
 }
 
 #map-sketch path {
-  stroke: rgba(150, 150, 150, 0.5);
-  stroke-width: 2px;
+  stroke: #acaeb0; 
+  stroke-width: 1.5px;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-  transform-origin: 0 0;
-  transform: rotate(5deg);
+  transform-origin: center;
+  opacity: 0; 
+  transition: stroke-width 0.3s ease; 
 }
 
-/* Canvas Styles */
+#map-sketch path:hover {
+  stroke-width: 2.5px;
+}
+
+#svg-container {
+  transform: translate(0, -50px); 
+}
+
 #particle-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;  /* Ensure canvas doesn't block clicks either */
+  pointer-events: none;
   z-index: 0;
 }
 
-/* Container Styles */
 .container {
   display: flex;
   flex-wrap: wrap;
-  width: 90vw;
+  width: 80vw;
   height: 90vh;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -78%);
+  transform: translate(-50%, -75%);
   z-index: 1;
   opacity: 0;
   animation: fadeIn 2s forwards;
-  justify-content: space-around;
-  align-content: center;
-}
+  justify-content: space-between;
+  align-content: space-between;
+  }
 
 .piece {
   width: 48%;
@@ -114,7 +117,6 @@ body, html {
   opacity: 1;
 }
 
-/* About Container Styles */
 .about-container {
   position: absolute;
   bottom: 20px;
@@ -155,10 +157,9 @@ body, html {
   visibility: visible;
 }
 
-/* Site Title Styles */
 .site-title {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
   font-size: 1.2em;
   color: #333;
@@ -175,7 +176,6 @@ body, html {
   opacity: 0.7;
 }
 
-/* Fade In Animation */
 @keyframes fadeIn {
   to {
     opacity: 1;

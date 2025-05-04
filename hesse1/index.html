@@ -86,7 +86,7 @@ canvas {
         }
 
         body.show-text #background-text{
-            opacity: 0.75;
+            opacity: 0.8;
         }
 
         #next-page-arrow {
@@ -137,7 +137,7 @@ canvas {
             "Slowly, the breathing of the calmed <br> man deepened."
         ];
 
-        // Easing variables for the white dot
+       
         let dotX;
         let dotY;
         let easing = 0.08;
@@ -151,10 +151,10 @@ canvas {
         const transitionDuration = 500;
         let showArrow = false;
         let arrowTimer = 0;
-        const arrowDelay = 10000; // 10 seconds
+        const arrowDelay = 9000; 
         let textOpacity = 0.6;
         let textGlow = 0.8;
-        let textDisplayTime = 10000;
+        let textDisplayTime = 9000;
 
         let stars = [];
         const numStars = 200;
@@ -275,13 +275,6 @@ canvas {
                     touchEdgeCount = 0;
                 }
 
-                if (touchEdgeCount >= exitTouchThreshold && !mouseIsPressed && !isTransitioning) {
-                    isTransitioning = true;
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => {
-                        window.location.href = 'hesse2/index.html';
-                    }, transitionDuration);
-                }
             } else {
                 let targetX = mouseX;
                 let dx = targetX - dotX;
@@ -319,13 +312,13 @@ canvas {
             }
 
             const backgroundText = document.getElementById('background-text');
-            let textOpacity = map(sin(frameCount * 0.1), -1, 1, 0.3, 0.8);
+            let textOpacity = map(sin(frameCount * 0.1), -1, 1, 0.1, 0.9);
             let textGlow = map(sin(frameCount * 0.05), -1, 1, 0.5, 1);
             backgroundText.style.opacity = millis() > arrowDelay ? textOpacity : 0;
             backgroundText.style.textShadow = `0 0 ${textGlow * 16}px rgba(255,255,255,${textGlow})`;
 
-            if (millis() > arrowDelay) {
-                document.body.classList.add('show-text');
+            
+            if (millis() > arrowDelay + 4500) { 
                 document.getElementById('next-page-arrow').classList.add('visible');
             }
 
@@ -335,6 +328,7 @@ canvas {
             if (stuckInShard !== null) {
                 dotSpeedX += (mouseX - pmouseX) * 0.1;
                 dotSpeedY += (mouseY - pmouseY) * 0.1;
+                return false;
             }
         }
 
@@ -348,16 +342,17 @@ canvas {
             });
         }
 
-        // Event listener for the arrow click
-       document.getElementById('next-page-arrow').addEventListener('click', () => {
-          if (!isTransitioning) { // Check if a transition is already in progress
-            isTransitioning = true;
-            document.body.classList.add('fade-out'); // Start fade out
-            setTimeout(() => {
-              window.location.href = 'hesse2/index.html'; // Go to the next page after the fade out
-            }, transitionDuration);
-          }
-        });
+        document.getElementById('next-page-arrow').addEventListener('click', (e) => {
+        e.preventDefault(); 
+        e.stopPropagation(); 
+        if (!isTransitioning) {
+        isTransitioning = true;
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = 'hesse2/index.html';
+        }, transitionDuration);
+    }
+});
 
 
     </script>

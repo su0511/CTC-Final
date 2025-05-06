@@ -57,18 +57,22 @@ window.addEventListener("DOMContentLoaded", () => {
       ease: "sine.inOut"
     });
 
-    photoBlock.addEventListener('click', (e) => {
+    piece.addEventListener('click', (e) => {
       e.preventDefault();
-
+    
       gsap.timeline()
         .to(photoBlock, { scale: 1.05, rotation: "+=2", duration: 0.15, ease: "power2.out" })
         .to(photoBlock, { scale: 1, rotation: "-=2", duration: 0.2, ease: "elastic.out(1, 0.3)" });
-
+    
       const link = piece.getAttribute('data-link');
       setTimeout(() => {
         window.location.href = link;
       }, 600);
     });
+    
+    const link = piece.getAttribute('data-link');
+    console.log('Link to:', link);
+
 
     Draggable.create(photoBlock, {
       bounds: "body",

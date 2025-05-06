@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #697F41; /* Initial background color */
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+canvas {
+    display: block; /* Important for p5.js canvas */
+}

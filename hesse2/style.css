@@ -1,0 +1,134 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dfdfdf;
+    font-family: 'EB Garamond', serif;
+}
+
+.container {
+    margin-top:0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    max-width: 90%;
+}
+
+.quote-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.quote {
+    font-size: 6rem; 
+    font-style: italic;
+    color: #444;
+    line-height: 95%;
+    margin-top: 0%;
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none;
+}
+
+.text-container {
+    text-align: left;
+    padding-top: 180px;
+}
+
+.text-block {
+    font-size: 0.9rem; 
+    font-style: normal; 
+    line-height: 1.7; 
+    color: #222;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    max-width: 500px;
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none;
+}
+
+body.page-1 {
+    background-color: #FCEFE3;
+}
+body.page-2 {
+    background-color: #E3F2FD;
+}
+body.page-3 {
+    background-color: #fcffcb;
+}
+body.page-4 {
+    background-color: #EDE7F6;
+}
+body.page-5 {
+    background-color: #F1F8E9;
+}
+
+body.page-1 .text-container {
+    padding-top: 18%;
+}
+
+body.page-2 .text-container {
+    padding-top: 13%;
+}
+
+body.page-4 .text-container {
+    padding-top: 30%;
+}
+
+body.page-5 .text-container {
+    padding-top: 20%;
+}
+
+.page-arrow {
+    position: fixed;
+    bottom: 40px;
+    font-size: 3rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+    color: rgba(0, 0, 0, 0.5);
+    user-select: none;
+  }
+  
+  #prev-page-arrow {
+    left: 40px;
+  }
+  
+  #next-page-arrow {
+    right: 40px;
+  }
+  
+  #final-jump-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3rem;
+    stroke-width: 1px;
+    color: rgba(0, 0, 0, 0.5); /* 改为黑色半透明 */
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s ease, transform 0.2s ease;
+    pointer-events: auto;
+    z-index: 4;
+  }
+  
+  #final-jump-arrow.visible {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  
+  #final-jump-arrow:hover {
+    transform: translateY(-20px);
+    color: rgba(0, 0, 0, 0.9); /* hover 时变深 */
+  }
+  

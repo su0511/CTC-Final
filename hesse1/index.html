@@ -3,7 +3,7 @@
     <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Hesse's Mirror</title>
+    <title>Before the Awakening</title>
     
     <style>
 
@@ -65,9 +65,11 @@ canvas {
             pointer-events: none; 
         }
 
-        body.fade-out #page-transition-overlay {
-            opacity: 1;
+        body.fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease;
         }
+
 
         #background-text {
             position: absolute;
@@ -323,6 +325,18 @@ canvas {
             }
 
         }
+        document.getElementById('next-page-arrow').addEventListener('click', (e) => {
+    e.preventDefault(); 
+    e.stopPropagation(); 
+    if (!isTransitioning) {
+        isTransitioning = true;
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = '../hesse2/index.html'; 
+        }, transitionDuration);
+    }
+});
+
 
         function mouseDragged() {
             if (stuckInShard !== null) {
@@ -349,7 +363,8 @@ canvas {
         isTransitioning = true;
         document.body.classList.add('fade-out');
         setTimeout(() => {
-            window.location.href = 'hesse2/index.html';
+            window.location.href ='hesse2/index.html';
+
         }, transitionDuration);
     }
 });

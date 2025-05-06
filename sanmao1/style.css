@@ -1,0 +1,304 @@
+@font-face {
+    font-family: "WenDing";
+    src: url("CTC-Final/Chinese/WenDingPLMingTi-1.ttf");
+    font-display: swap;
+}
+
+body {
+    overflow-x: hidden;
+    color: #4a4a4a;
+    font-family: 'EB Garamond', serif;
+}
+
+.parallax-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 20vh;
+}
+
+.parallax-image {
+    position: absolute;
+    transform: translateX(-50%) translateY(0px);
+    width: auto;
+    max-width: 70%;
+    height: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.1s linear, max-width 0.3s ease, max-height 0.3s ease;
+    will-change: transform;
+    z-index: -1;
+}
+
+.content-section {
+    padding: 8vh 10%;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 8vh auto;
+}
+
+.quote-title {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 2.5rem;
+    max-width: 100%;
+    transition: opacity 0.8s ease;
+}
+
+.quote-title,
+.text-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.25s linear, transform 0.25s linear;
+}
+
+.show-title .quote-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-text .text-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hide-title .quote-title {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .quote-title {
+        font-size: 1.8rem;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .parallax-image {
+        max-width: 85%;
+    }
+
+    .content-section {
+        padding: 6vh 5%;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    width: 70%;
+}
+
+.three-images,
+.two-images {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.three-images {
+    padding: 0 5%;
+}
+
+.two-images {
+    padding: 0 10%;
+}
+
+.three-images .parallax-image {
+    max-width: 30%;
+}
+
+.two-images .parallax-image {
+    max-width: 45%;
+}
+
+.fixed-image {
+    transform: translateX(-50%) translateY(0px) !important;
+    max-width: 33.33% !important;
+    height: auto !important;
+}
+
+.chinese {
+    font-family: 'WenDing', serif;
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+#backToTop:hover {
+    background-color: rgba(106, 102, 102, 0.8);
+}
+
+.quote-title span.chinese {
+    display: block;
+    font-family: 'WenDing', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.quote-title span.english {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+
+#missYouText {
+    width: 60%;
+    padding: 3rem 4rem;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+}
+.text-section-stranger {
+    max-width: 75%;
+}
+
+.text-section-freedom {
+    width: 70%;              
+    margin-left: 40%;   
+    padding: 2rem 1rem;
+    text-align: left;
+}
+
+.freedom-en {
+    width: 50%;    
+    margin-left: -50%; 
+    margin-top:20%;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.emotion-zh {
+    width: 80%;
+    margin-bottom:40%;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.emotion-en {
+    width: 100%;
+    margin-left: 25%;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.quote-life-en {
+    display: block;
+    max-width: 80%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'EB Garamond';
+    font-weight: 300;
+    margin: 0 auto;
+  }
+  
+  .quote-life-zh {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'WenDing', serif;
+    line-height: 2; 
+    font-weight: 400;
+}
+
+.life-zh {
+    max-width: 55%;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.9;
+    margin-top: 20%;
+    margin-left:8%
+  }
+  
+  .life-en {
+    max-width: 58%;
+    margin-left: 22%;
+    text-align: left;
+    line-height: 1.8;
+    margin-top: 5%;
+  }
+  
+  .moth-zh {
+    max-width: 50%;
+    text-align: left;
+    line-height: 1.9;
+    margin-left:30%;
+  }
+  
+  .moth-en {
+    max-width: 45%;
+    margin-left: 5%;
+    text-align: left;
+    line-height: 1.8;
+    margin-top:10%
+  }
+
+  .moth-zh1 {
+    max-width: 50%;
+    text-align: center;
+    line-height: 1.9;
+    margin-left:30%;
+  }
+  
+  .moth-en1 {
+    max-width: 35%;
+    margin-left: 25%;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .wander-zh {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 2;
+    margin-bottom: 30%;
+    margin-left:50%;
+  }
+  
+  .wander-en {
+    width: 100%;
+    margin-left: -22%;
+    text-align: center;
+    line-height: 1.8;
+    margin-top: 10%;
+  }
+  
+  #muteToggle:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  #muteToggle:hover svg {
+    fill: black;
+  }
+  

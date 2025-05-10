@@ -7,3 +7,52 @@
     display: block;
   }
 
+  #instruction {
+    position: fixed;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: none;
+    background-color: black;
+    font-style: italic;
+}
+
+#instruction.visible {
+    opacity: 1;
+}
+
+#homeButton {
+  position: fixed;
+  bottom: 25px;
+  right: 30px;
+  font-size: 1rem;
+  font-family: 'EB Garamond', serif;
+  color: white;
+  padding: 6px 14px;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 20;
+  font-weight:700;
+  font-style: italic;
+  border-radius: 5%;
+  letter-spacing: 0.01rem;
+}
+
+#homeButton.visible {
+  opacity: 1;
+  pointer-events: auto;
+  opacity:80%;
+}
+
+#homeButton:hover {
+  color: #fff;
+  opacity:20%;
+  background-color: grey;
+}

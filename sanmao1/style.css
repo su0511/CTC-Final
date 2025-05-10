@@ -341,21 +341,6 @@ p {
     height: 190vh; 
   }
 
-  #texture-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; 
-    background-image: url('/sanmao1/assets/texture.jpg');
-    background-size: cover;
-    background-repeat: repeat;
-    mix-blend-mode: multiply;
-    opacity: 0.2; 
-    z-index: -100; 
-  }
-
   #footer-credits {
     text-align: center;
     padding: 2rem 1rem;

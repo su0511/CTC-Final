@@ -115,6 +115,25 @@ canvas {
             color: rgba(255, 255, 255, 1);
         }
 
+            #start-hint {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.85);
+        background: rgba(0, 0, 0, 0.4);
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s ease;
+        font-family: 'EB Garamond',serif;
+    }
+
+
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
@@ -128,9 +147,10 @@ canvas {
       "But Siddhartha himself was not happy. He had begun to suspect that his father’s wisdom and his teachers’ teachings were not enough to bring him peace, not enough to bring him enlightenment. He had learned much from the Brahmins and the holy books, but it did not quench his thirst. It was not the Self, it was not the Atman, not the final goal."
     </div>
      <div id="next-page-arrow" class="hidden">&#8680;</div>
+     <div id="start-hint">Keep pressing to awaken...</div>
     <script>
         let shards = [];
-        const texts = [
+        let texts = [
             "Where was the Self to be found?",
             "Was not Atman in him alone?",
             "Who was it who taught him?",
@@ -145,21 +165,21 @@ canvas {
         let easing = 0.08;
         let stuckInShard = null;
         let touchEdgeCount = 0;
-        const exitTouchThreshold = 2;
+        let exitTouchThreshold = 2;
         let dotSpeedX = 0;
         let dotSpeedY = 0;
-        const friction = 0.95;
+        let friction = 0.95;
         let isTransitioning = false;
-        const transitionDuration = 500;
+        let transitionDuration = 500;
         let showArrow = false;
         let arrowTimer = 0;
-        const arrowDelay = 9000; 
+        let arrowDelay = 9000; 
         let textOpacity = 0.6;
         let textGlow = 0.8;
         let textDisplayTime = 9000;
 
         let stars = [];
-        const numStars = 200;
+        let numStars = 200;
 
         function setup() {
             createCanvas(windowWidth, windowHeight);
@@ -208,7 +228,7 @@ canvas {
 
             // Draw twinkling stars
             for (let star of stars) {
-                const twinkle = map(sin(frameCount * star.twinkleSpeed + star.twinkleOffset), -1, 1, 0.5, 1);
+                let twinkle = map(sin(frameCount * star.twinkleSpeed + star.twinkleOffset), -1, 1, 0.5, 1);
                 fill(255, star.alpha * twinkle);
                 noStroke();
                 ellipse(star.x, star.y, star.size * twinkle, star.size * twinkle);
@@ -218,7 +238,7 @@ canvas {
             let t = millis() /1000;
 
             for (let i = 0; i < shards.length; i++) {
-                const s = shards[i];
+                let s = shards[i];
                 s.baseY = 15 * sin(t * 1.5 + s.offset);
                 strokeWeight(s.entered ? 2 : 0.5);
                 fill(s.entered ? color(255, 20) : color(0, 0, 0, 0));
@@ -232,15 +252,15 @@ canvas {
                 drawingContext.shadowBlur = 0;
                 drawingContext.shadowColor = 'rgba(0,0,0,0)';
 
-                const fragment = s.fragment;
+                let fragment = s.fragment;
                 fragment.classList.toggle('visible', s.entered);
 
                 if (s.entered) {
                     let fragmentX = s.x + 20;
                     let fragmentY = s.y + s.baseY - 10;
 
-                    const fragmentWidth = fragment.offsetWidth;
-                    const fragmentHeight = fragment.offsetHeight;
+                    let fragmentWidth = fragment.offsetWidth;
+                    let fragmentHeight = fragment.offsetHeight;
 
                     if (fragmentX + fragmentWidth > width) {
                         fragmentX = s.x - fragmentWidth - 20;
@@ -263,11 +283,11 @@ canvas {
                 dotSpeedX *= friction;
                 dotSpeedY *= friction;
 
-                const s = shards[stuckInShard];
-                const d = dist(dotX, dotY, s.x, s.y + s.baseY);
+                let s = shards[stuckInShard];
+                let d = dist(dotX, dotY, s.x, s.y + s.baseY);
 
                 if (d > s.r / 2) {
-                    const angle = atan2(dotY - (s.y + s.baseY), dotX - s.x);
+                    let angle = atan2(dotY - (s.y + s.baseY), dotX - s.x);
                     dotX = s.x + cos(angle) * s.r / 2;
                     dotY = (s.y + s.baseY) + sin(angle) * s.r / 2;
                     touchEdgeCount++;
@@ -295,8 +315,8 @@ canvas {
 
             if (stuckInShard === null) {
                 for (let i = 0; i < shards.length; i++) {
-                    const s = shards[i];
-                    const d = dist(dotX, dotY, s.x, s.y + s.baseY);
+                    let s = shards[i];
+                    let d = dist(dotX, dotY, s.x, s.y + s.baseY);
                     if (d < s.r / 2) {
                         stuckInShard = i;
                         shards[i].entered = true;
@@ -313,7 +333,7 @@ canvas {
                 touchEdgeCount = 0;
             }
 
-            const backgroundText = document.getElementById('background-text');
+            let backgroundText = document.getElementById('background-text');
             let textOpacity = map(sin(frameCount * 0.1), -1, 1, 0.1, 0.9);
             let textGlow = map(sin(frameCount * 0.05), -1, 1, 0.5, 1);
             backgroundText.style.opacity = millis() > arrowDelay ? textOpacity : 0;
@@ -325,6 +345,16 @@ canvas {
             }
 
         }
+
+                window.addEventListener('load', () => {
+            const hint = document.getElementById('start-hint');
+            hint.style.opacity = 1;
+
+            setTimeout(() => {
+                hint.style.opacity = 0;
+            }, 4000);
+        });
+
         document.getElementById('next-page-arrow').addEventListener('click', (e) => {
     e.preventDefault(); 
     e.stopPropagation(); 

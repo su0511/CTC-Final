@@ -7,13 +7,13 @@
   body {
     margin: 0;
     overflow: hidden;
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
   }
   canvas {
     display: block;
-    width: 100vw; 
-    height: 100vh; 
-    cursor: pointer; 
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
   }
 
   #overlay {
@@ -31,7 +31,7 @@
   }
 
   .fade-background {
-    background-color: rgba(300, 100, 150, 0.1) !important; 
+    background-color: rgba(300, 100, 150, 0.1) !important;
   }
 
   #floatingText {
@@ -41,16 +41,17 @@
     text-align: center;
     transform: translate(-50%, -50%);
     font-size:9.5vw;
-    line-height: 0.95; 
+    line-height: 0.95;
     color: #333;
     opacity: 0;
     transition: opacity 3s ease-in-out;
     white-space: nowrap;
     font-weight: 600;
+    letter-spacing: -0.03em;
     font-style:italic;
-    user-select: none; 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     -ms-user-select: none;
   }
 
@@ -62,7 +63,7 @@
   position: fixed;
   bottom: 25px;
   right: 30px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: 'EB Garamond', serif;
   color: rgba(24, 24, 24, 0.6);
   padding: 6px 14px;
@@ -71,9 +72,10 @@
   pointer-events: none;
   transition: opacity 1.5s ease;
   z-index: 20;
-  font-weight:500;
+  font-weight:700;
   font-style: italic;
   border-radius: 5%;
+  letter-spacing: 0.01rem;
 }
 
 #homeButton.visible {
@@ -97,22 +99,25 @@
     let particles = [];
     let floatingText = document.getElementById('floatingText');
     let overlay = document.getElementById('overlay');
-    let canvas; 
+    let canvas;
 
     function setup() {
-      canvas = createCanvas(windowWidth, windowHeight); 
-      background(200, 120, 30, 20);
+      canvas = createCanvas(windowWidth, windowHeight);
+      background(255); 
 
       setTimeout(() => {
         floatingText.classList.add('show-text');
-        overlay.classList.add('fade-background'); 
+        overlay.classList.add('fade-background');
       }, 5000);
     }
 
     function draw() {
+      background(255, 1); 
+
       if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-      particles.push(new Particle(mouseX, mouseY, 5, 75));
-    }
+        particles.push(new Particle(mouseX, mouseY, 5, 75));
+      }
+
       for (let i = particles.length - 2; i >= 0; i--) {
         particles[i].update(particles);
         particles[i].show();
@@ -149,13 +154,13 @@
     }
 
     function windowResized() {
-      resizeCanvas(windowWidth, windowHeight); 
-      background(200, 120, 30, 20); 
+      resizeCanvas(windowWidth, windowHeight);
+      background(255);
     }
 
     setTimeout(() => {
       document.getElementById("homeButton").classList.add("visible");
-    }, 10000); // 10 秒 = 10000 毫秒
+    }, 10000);
 
 
   </script>

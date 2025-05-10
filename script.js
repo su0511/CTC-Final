@@ -42,8 +42,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let pieces = document.querySelectorAll('.piece');
 
   pieces.forEach(piece => {
-    const photoBlock = piece.querySelector('.photo-block');
-    const randomRotation = (Math.random() - 0.5) * 4;
+    let photoBlock = piece.querySelector('.photo-block');
+    let randomRotation = (Math.random() - 0.5) * 4;
     gsap.set(photoBlock, {
       rotation: randomRotation,
       scale: 1,
@@ -64,13 +64,13 @@ window.addEventListener("DOMContentLoaded", () => {
         .to(photoBlock, { scale: 1.05, rotation: "+=2", duration: 0.15, ease: "power2.out" })
         .to(photoBlock, { scale: 1, rotation: "-=2", duration: 0.2, ease: "elastic.out(1, 0.3)" });
     
-      const link = piece.getAttribute('data-link');
+      let link = piece.getAttribute('data-link');
       setTimeout(() => {
         window.location.href = link;
       }, 600);
     });
     
-    const link = piece.getAttribute('data-link');
+    let link = piece.getAttribute('data-link');
     console.log('Link to:', link);
 
 
@@ -80,8 +80,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const initSVGAnimation = () => {
-    const paths = document.querySelectorAll('#map-sketch path');
+  let initSVGAnimation = () => {
+    let paths = document.querySelectorAll('#map-sketch path');
     console.log('Detected SVG paths:', paths.length);
 
     if (paths.length === 0) {
@@ -90,7 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     paths.forEach((path, index) => {
-      const pathLength = path.getTotalLength();
+      let pathLength = path.getTotalLength();
       console.log(`Path ${index + 1} length:`, pathLength);
 
       gsap.set(path, {
@@ -99,7 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
         opacity: 0
       });
 
-      const masterTL = gsap.timeline({
+      let masterTL = gsap.timeline({
         repeat: -1,
         yoyo: true,
         repeatDelay: 0.8
@@ -130,13 +130,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   initSVGAnimation();
 
-  const resizeHandler = () => {
+  let resizeHandler = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     init();
     
     document.querySelectorAll('#map-sketch path').forEach(path => {
-      const length = path.getTotalLength();
+      let length = path.getTotalLength();
       gsap.set(path, {
         strokeDasharray: length,
         strokeDashoffset: length

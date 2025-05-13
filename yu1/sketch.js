@@ -59,3 +59,11 @@ function draw() {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
+function enterSite() {
+    const intro = document.getElementById('intro-screen');
+    intro.classList.add('fade-out');
+    setTimeout(() => {
+      window.location.href = "second.html"; // 可替换为内部锚点或内容切换
+    }, 1000); // 与 CSS 动画时间一致
+  }

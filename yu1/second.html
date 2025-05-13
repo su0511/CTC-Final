@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tokyo Ueno Station – Yu Miri</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'EB Garamond', serif;
+      background-color: #f7f5f1;
+      color: #333;
+      line-height: 1.8;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
+    header {
+      padding: 80px 20px 40px;
+      text-align: center;
+      background-color: #2c3e27;
+      color: white;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+      margin: 30px 0;
+      padding-left: 20px;
+      border-left: 3px solid #aaa;
+    }
+    .img-wrapper {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .img-wrapper img {
+      max-width: 100%;
+      height: auto;
+    }
+    .skewed-section {
+      transform: skew(-10deg);
+      background: #eae8e4;
+      margin: 80px auto;
+      width: 30%;
+      height: 300px;
+      overflow: hidden;
+      border-left: 4px solid #999;
+      border-right: 4px solid #999;
+      margin-top: 0%;
+      margin-bottom: 0%;
+    }
+    .inner-scroll {
+      transform: skew(10deg);
+      height: 100%;
+      overflow-y: scroll;
+      padding: 20px;
+      font-style: italic;
+      color: #555;
+      line-height: 1.7;
+      transform: skew(-0.35deg);
+    }
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #ccc;
+    }
+    .quote:hover {
+    color: #111;
+    border-left-color: #333;
+    background-color: #f1efeb;
+    transition: all 0.3s ease;
+    }
+    .quote {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+    }
+    .quote.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    .inner-scroll::-webkit-scrollbar {
+    width: 6px;
+    }
+    .inner-scroll::-webkit-scrollbar-thumb {
+    background: #aaa;
+    opacity: 0%;
+    border-radius: 3px;
+    }
+    #explore-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #13210f;
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    border-radius: 5%;
+    }
+    #explore-btn:hover {
+    opacity: 1;
+    background-color: #444;
+    border-radius: 10%;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tokyo Ueno Station</h1>
+    <p>Her antenna is tuned to the quietest voices – a tribute to Yu Miri</p>
+  </header>
+
+  <div class="section">
+    <p>“Tokyo Ueno Station” tells the story of Kazu, the ghost of a homeless construction worker, who lingers in Ueno Park – a place where he once lived among cardboard shelters, now beautified for tourists. Through his eyes, we see a Japan that hides its vulnerable, polishing its surface while pushing away the unwanted.</p>
+
+    <div class="quote">“I’m kind of like a parabola antenna, so that I can magnify the small voices of people who aren’t often heard.” – Yu Miri</div>
+
+    <p>The novel is shaped by real interviews with unhoused individuals, some of whom scavenged for food left behind convenience stores or cared for stray cats with their last coins. Kazu’s story is not only personal but representative of many erased by disaster, poverty, or society’s indifference.</p>
+
+    <div class="img-wrapper">
+      <img src="assets/yu1.jpg" alt="Yu Miri in Ueno Park">
+      <p style="font-size: 0.8rem; color: #777;">Yu Miri in Ueno Park. Photo by Noriko Hayashi for The New York Times.</p>
+    </div>
+
+    <div class="quote">“Books were the escape room for my soul.”</div>
+
+    <p>Born to Zainichi Korean parents, Yu Miri faced abuse, discrimination, and poverty. These experiences fuel her literary voice. With lyrical prose and quiet rage, she crafts stories for those left behind – the ones not counted, not shown, not heard.</p>
+  </div>
+
+  <div class="skewed-section">
+    <div class="inner-scroll">
+      <p>“I am the ghost of someone who was never really seen.”</p>
+      <p>“They beautify the park, but my presence remains.”</p>
+      <p>“There is no place to return to. Not even in death.”</p>
+      <p>“I existed in the gaps of this world, unseen.”</p>
+      <p>“Living or dead, I was always just passing through.”</p>
+      <p>“No one ever said my name in the place where I lived.”</p>
+      <p> “I watched the world move on without me.”</p>
+      <p> “Even memory has a place to go. I don’t.”</p>
+      <p> “The city never remembered me. I became a stain in the wind.”</p>
+      <p> “Time passes for the living. For me, it only repeats.”</p>
+      <p>“My voice makes no sound. But I am still here.”</p>
+      <p> “We are the forgotten, but we never forget.”</p>
+      <p> “A park full of people, and I was still the loneliest one.”</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p>In her bookstore in Minami Soma, a town recovering from the Fukushima disaster, Yu continues her mission: giving shelter to words and to people. “Tokyo Ueno Station” is more than fiction – it’s memory, protest, and elegy in one.</p>
+  </div>
+  <a id="explore-btn" href="../index.html"><i>Explore More</i></a>
+
+
+<script>
+      window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+  });
+
+  function scrollToContent() {
+    document.querySelector('.section').scrollIntoView({ behavior: 'smooth' });
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.quote').forEach(q => observer.observe(q));
+</script>
+<footer>
+    <p>Text adapted from <i>The New York Times</i> <br>feature on Yu Miri</p>
+  </footer>
+</body>
+</html>

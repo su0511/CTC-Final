@@ -28,6 +28,7 @@ const prevPageArrow = document.getElementById('prev-page-arrow');
 const nextPageArrow = document.getElementById('next-page-arrow');
 const finalJumpArrow = document.getElementById('final-jump-arrow');
 const body = document.body;
+const pageDots = document.getElementById('pageDots');
 
 let timeoutId = null;
 
@@ -42,147 +43,133 @@ let contentShown = false;
 function setup() {
   noCanvas();
   loadPage(currentPage);
-  createPageDots(); 
+  createPageDots();
 
   prevPageArrow.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (currentPage > 0) {
-          currentPage--;
-          loadPage(currentPage);
-      }
+    e.stopPropagation();
+    if (currentPage > 0) {
+      currentPage--;
+      loadPage(currentPage);
+    }
   });
 
   nextPageArrow.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (currentPage < totalPages - 1) {
-          currentPage++;
-          loadPage(currentPage);
-      }
+    e.stopPropagation();
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      loadPage(currentPage);
+    }
   });
 
   finalJumpArrow.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      document.body.classList.add("fade-out");
-      setTimeout(() => {
-          window.location.href = "../hesse3/index.html";
-      }, 500);
+    e.preventDefault();
+    e.stopPropagation();
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = "../hesse3/index.html";
+    }, 500);
   });
 }
 
 function draw() {
   if (!quoteFinished) {
-      let quoteText = pages[currentPage].quote;
-      let wave = map(sin(frameCount * 0.15), -1, 1, 2, 7);
-      if (frameCount % int(wave) === 0) {
-          if (charIndex < quoteText.length) {
-              displayedQuote += quoteText[charIndex];
-              quoteBox.innerHTML = displayedQuote;
-              charIndex++;
-          } else {
-              quoteFinished = true;
-              setTimeout(() => {
-                textContainer.innerHTML = pages[currentPage].content;
-                textContainer.style.opacity = "1";
-                contentShown = true;
-                document.getElementById("pageDots")?.classList.add("hidden");
-              }, 400);
-              
-          }
+    let quoteText = pages[currentPage].quote;
+    let wave = map(sin(frameCount * 0.15), -1, 1, 2, 7);
+    if (frameCount % int(wave) === 0) {
+      if (charIndex < quoteText.length) {
+        displayedQuote += quoteText[charIndex];
+        quoteBox.innerHTML = displayedQuote;
+        charIndex++;
+      } else {
+        quoteFinished = true;
+        setTimeout(() => {
+          textContainer.innerHTML = pages[currentPage].content;
+          textContainer.style.opacity = "1";
+          contentShown = true;
+          pageDots.classList.add("hidden"); 
+        }, 400);
       }
+    }
   }
 }
 
 function updatePage() {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-      timeoutId = null;
-    }
-  
-    body.className = `page-${currentPage + 1}`;
-    const prevArrow = document.getElementById("prev-page-arrow");
-    const nextArrow = document.getElementById("next-page-arrow");
-    const jumpArrow = document.getElementById("final-jump-arrow");
-  
-    if (currentPage === 0) {
-      prevArrow.style.display = "none";
-      nextArrow.style.display = "block";
-      jumpArrow.style.display = "none";
-    } else if (currentPage === totalPages - 1) {
-      prevArrow.style.display = "block";
-      nextArrow.style.display = "none";
-      jumpArrow.style.display = "none"; 
-      
-      timeoutId = setTimeout(() => {
-        jumpArrow.style.display = "block";
-        jumpArrow.classList.add("visible");
-      }, 10000);
-      
-    } else {
-      prevArrow.style.display = "block";
-      nextArrow.style.display = "block";
-      jumpArrow.style.display = "none";
-    }
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+    timeoutId = null;
   }
-  
-  function createPageDots() {
-    const pageDots = document.getElementById('pageDots');
-    pageDots.innerHTML = ""; // 清空原有内容
-  
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement('div');
-      dot.classList.add('page-dot');
-      if (i === currentPage) dot.classList.add('active');
-  
-      // 可选：添加点击跳转功能
-      dot.addEventListener('click', () => {
-        currentPage = i;
-        loadPage(currentPage);
-      });
-  
-      pageDots.appendChild(dot);
-    }
+
+  body.className = `page-${currentPage + 1}`;
+
+  if (currentPage === 0) {
+    prevPageArrow.style.display = "none";
+    nextPageArrow.style.display = "block";
+    finalJumpArrow.style.display = "none";
+  } else if (currentPage === totalPages - 1) {
+    prevPageArrow.style.display = "block";
+    nextPageArrow.style.display = "none";
+    finalJumpArrow.style.display = "none";
+
+    timeoutId = setTimeout(() => {
+      finalJumpArrow.style.display = "block";
+      finalJumpArrow.classList.add("visible");
+    }, 10000);
+  } else {
+    prevPageArrow.style.display = "block";
+    nextPageArrow.style.display = "block";
+    finalJumpArrow.style.display = "none";
   }
-  
-  function updatePageDots() {
-    const dots = document.querySelectorAll('.page-dot');
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentPage);
-    });
-  }
-  
-
-function loadPage(index) {
-    if (index >= 0 && index < pages.length) {
-        currentPage = index; // 关键：更新当前页码
-
-        let currentPageData = pages[index]; // 避免覆盖 currentPage
-
-        quoteBox.textContent = currentPageData.quote;
-        textContainer.textContent = currentPageData.content;
-        body.className = `page-${index + 1}`;
-        textContainer.style.opacity = 0;
-
-        quoteBox.classList.add('has-letter-spacing');
-        textContainer.classList.add('has-letter-spacing');
-
-        charIndex = 0;
-        displayedQuote = "";
-        quoteFinished = false;
-        contentShown = false;
-
-        quoteBox.innerHTML = "";
-        textContainer.innerHTML = "";
-
-        if (index === 0) {
-            textContainer.style.opacity = 1;
-        }
-
-        updatePage();
-        createPageDots();
-        updatePageDots();
-        
-    }
 }
 
+function createPageDots() {
+  pageDots.innerHTML = "";
 
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('page-dot');
+    if (i === currentPage) dot.classList.add('active');
+
+    dot.addEventListener('click', () => {
+      currentPage = i;
+      loadPage(currentPage);
+    });
+
+    pageDots.appendChild(dot);
+  }
+}
+
+function updatePageDots() {
+  const dots = document.querySelectorAll('.page-dot');
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentPage);
+  });
+}
+
+function loadPage(index) {
+  if (index >= 0 && index < pages.length) {
+    currentPage = index;
+    let currentPageData = pages[index];
+
+    quoteBox.textContent = currentPageData.quote;
+    textContainer.textContent = currentPageData.content;
+    body.className = `page-${index + 1}`;
+    textContainer.style.opacity = 0;
+
+    quoteBox.classList.add('has-letter-spacing');
+    textContainer.classList.add('has-letter-spacing');
+
+    charIndex = 0;
+    displayedQuote = "";
+    quoteFinished = false;
+    contentShown = false;
+
+    quoteBox.innerHTML = "";
+    textContainer.innerHTML = "";
+
+    pageDots.classList.remove("hidden");
+
+    updatePage();
+    createPageDots();
+    updatePageDots();
+  }
+}

@@ -27,8 +27,15 @@ let fadeDirection = 1;
 let loopCount = 0;
 let hasLooped = false;
 
+let ebFont;
+
+function preload() {
+  ebFont = loadFont('EBGaramond-VariableFont_wght.ttf'); // 确保路径正确
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont(ebFont);
   layer = createGraphics(windowWidth, windowHeight);
   layer.stroke(255);
   layer.noFill();
@@ -125,10 +132,11 @@ function onScreen(p) {
 }
 
 function windowResized() {
+  if (!layer) return; 
   resizeCanvas(windowWidth, windowHeight);
   let oldLayer = layer;
   layer = createGraphics(windowWidth, windowHeight);
-  layer.image(oldLayer, 0, 0);
+  image(oldLayer, 0, 0);
   layer.stroke(255);
   layer.noFill();
   layer.strokeWeight(0.8);

@@ -16,7 +16,7 @@ let pages = [
       content: "As years pass, Siddhartha lives a life of extravagant wealth. Yet an increasing emptiness gnaws at him; the lightness of his spirit has been replaced by the heaviness of worldly fatigue. He dreams of a songbird dying in its cage and awakens to realize that his own spirit, is suffocating."
   },
   {
-      quote: "Now he, Siddhartha, had also become completely a childlike person… Now he too felt.",
+      quote: "Now he, Siddhartha, had also become completely a childlike person... Now he too felt.",
       content: "Sickened by city life, Siddhartha finally leaves it behind and becomes a humble ferryman on a river. Fate then brings him an unexpected charge, his young son is left in Siddhartha’s care. Siddhartha experiences for the first time the anxious, profound love of a father. But young Siddhartha, eventually runs away back to the city. Losing his son plunges Siddhartha into the same anguish that ordinary people suffer – he frantically searches for the boy to no avail, and the ache of love becomes a wound in his soul."
   }
 ];

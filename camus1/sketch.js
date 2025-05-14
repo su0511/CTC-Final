@@ -87,7 +87,7 @@ function draw() {
   fill(255, fadeAmount);
   textAlign(CENTER, CENTER);
   textSize(55);
-  textFont('EB Garamond');
+  textFont(ebFont);
   textWrap(WORD); 
 
   let quoteBoxWidth = width * 0.6;

@@ -4,21 +4,7 @@ let noiseScale = 0.005;
 let c1, c2;
 let layer;
 
-let quotes = [
-  "We must imagine Sisyphus happy.",
-  "The struggle itself toward the heights is enough to fill a man’s heart.",
-  "There is no fate that cannot be surmounted by scorn.",
-  "The absurd man is he who is aware of the conflict but does not give in.",
-  "Crushing truths perish from being acknowledged.",
-  "At any street corner, the feeling of absurdity can strike any man in the face.",
-  "The absurd is born of this confrontation between the human need and the unreasonable silence of the world.",
-  "The struggle itself is enough to fill a man’s heart.",
-  "Knowing one's destiny and rising above it is the essence of revolt.",
-  "A fate is not a punishment; it is a price.",
-  "Sisyphus teaches the higher fidelity that negates the gods and raises rocks.",
-  "Each atom of that stone, each mineral flake of that night-filled mountain, in itself forms a world.",
-  "There is no sun without shadow, and it is essential to know the night.",
-];
+let quotes = [];
 
 let currentQuoteIndex = 0;
 let lastChangeTime = 0;
@@ -34,6 +20,8 @@ function preload() {
 }
 
 function setup() {
+  document.querySelectorAll("#quotes .quote").forEach(q => quotes.push(q.textContent.trim()));
+
   createCanvas(windowWidth, windowHeight);
   textFont(ebFont);
   layer = createGraphics(windowWidth, windowHeight);

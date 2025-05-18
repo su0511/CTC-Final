@@ -9,26 +9,13 @@
     body {
       margin: 0;
       font-family: 'EB Garamond', serif;
-      background-color: #f7f5f1;
+      background-color: #f2f7f1;
       color: #333;
       line-height: 1.8;
       opacity: 0;
       transition: opacity 2s ease-in;
     }
-    header {
-      padding: 80px 20px 40px;
-      text-align: center;
-      background-color: #2c3e27;
-      color: white;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.8;
-    }
+
     .section {
       padding: 60px 20px;
       max-width: 700px;
@@ -44,6 +31,8 @@
     .img-wrapper {
       text-align: center;
       margin: 40px 0;
+      max-width: 700px;
+      margin: auto;
     }
     .img-wrapper img {
       max-width: 100%;
@@ -51,16 +40,26 @@
     }
     .skewed-section {
       transform: skew(-10deg);
-      background: #eae8e4;
+      background: #e3ece3;
       margin: 80px auto;
       width: 30%;
       height: 300px;
       overflow: hidden;
-      border-left: 4px solid #999;
-      border-right: 4px solid #999;
+      border-left: 4px solid #167042;
+      border-right: 4px solid #0c4628;
       margin-top: 0%;
       margin-bottom: 0%;
+      position: relative; 
     }
+    .skewed-section.left {
+      margin-right:auto;
+      width:25%!important;
+    }
+    .skewed-section.right {
+      margin-left: auto;
+      width:35%!important;
+    }
+
     .inner-scroll {
       transform: skew(10deg);
       height: 100%;
@@ -122,34 +121,59 @@
     background-color: #444;
     border-radius: 10%;
     }
-
-
+    .two-col-skewed {
+      display: flex;
+      justify-content: space-between;
+      margin: 80px auto;
+      width: 80%;
+    }
+    .two-col-skewed .skewed-section {
+      width: 48%;
+      margin-bottom: 0;
+    }
+    .img-wrapper {
+        margin-top: 80px;
+    }
 
   </style>
 </head>
 <body>
-  <header>
-    <h1>Tokyo Ueno Station</h1>
-    <p>Her antenna is tuned to the quietest voices – a tribute to Yu Miri</p>
-  </header>
 
   <div class="section">
-    <p>“Tokyo Ueno Station” tells the story of Kazu, the ghost of a homeless construction worker, who lingers in Ueno Park – a place where he once lived among cardboard shelters, now beautified for tourists. Through his eyes, we see a Japan that hides its vulnerable, polishing its surface while pushing away the unwanted.</p>
-
-    <div class="quote">“I’m kind of like a parabola antenna, so that I can magnify the small voices of people who aren’t often heard.” – Yu Miri</div>
-
-    <p>The novel is shaped by real interviews with unhoused individuals, some of whom scavenged for food left behind convenience stores or cared for stray cats with their last coins. Kazu’s story is not only personal but representative of many erased by disaster, poverty, or society’s indifference.</p>
-
-    <div class="img-wrapper">
-      <img src="assets/yu1.jpg" alt="Yu Miri in Ueno Park">
-      <p style="font-size: 0.8rem; color: #777;">Yu Miri in Ueno Park. Photo by Noriko Hayashi for The New York Times.</p>
-    </div>
-
-    <div class="quote">“Books were the escape room for my soul.”</div>
-
-    <p>Born to Zainichi Korean parents, Yu Miri faced abuse, discrimination, and poverty. These experiences fuel her literary voice. With lyrical prose and quiet rage, she crafts stories for those left behind – the ones not counted, not shown, not heard.</p>
+    <br><br>
+    <p><b>“Tokyo Ueno Station” tells the story of Kazu, the ghost of a homeless construction worker, who lingers in Ueno Park – a place where he once lived among cardboard shelters, now beautified for tourists. Through his eyes, we see a Japan that hides its vulnerable, polishing its surface while pushing away the unwanted.</p></b>
   </div>
 
+  <div class="two-col-skewed">
+    <div class="skewed-section left">
+      <div class="inner-scroll">
+        <p>“I’m kind of like a parabola antenna, so that I can magnify the small voices of people who aren’t often heard.” – Yu Miri</p>
+        <p>The novel is shaped by real interviews with unhoused individuals, some of whom scavenged for food left behind convenience stores or cared for stray cats with their last coins. Kazu’s story is not only personal but representative of many erased by disaster, poverty, or society’s indifference.</p>
+      </div>
+    </div>
+    <div class="skewed-section right">
+      <div class="inner-scroll">
+        <p>Born to Zainichi Korean parents, Yu Miri faced abuse, discrimination, and poverty. These experiences fuel her literary voice. With lyrical prose and quiet rage, she crafts stories for those left behind – the ones not counted, not shown, not heard.</p>
+        <p> Yu is the eldest of four children. Her father, also the son of Korean immigrants, worked at a pachinko gambling parlor and was often abusive, she said, spending most of his income betting on horses or playing poker. Her mother supported the family as a hostess at a cabaret club in Yokohama, Japan’s second-largest city. A younger brother was violent — he once took a baseball bat to the windows of the house, drawing the police — and her parents divorced when Yu was a child.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-wrapper">
+      <img src="assets/yu1.jpg" alt="Yu Miri in Ueno Park">
+      <p style="font-size: 0.8rem; color: #777;">Yu Miri in Ueno Park. Photo by Noriko Hayashi for The New York Times.</p>
+  </div>
+
+  <div class="section">
+  <p>“Japan is so clean and there is also this clean image,” Yu said. “But there is also this feeling of not letting people see dirty or ‘unacceptable’ things.” As a society, she added, Japan “pushes out the things that they don’t want others to see into hiding.”</p>
+   <p>According to Japanese government data, the number of homeless people around the country has dropped from more than 25,000 in 2003 to about 4,500 now. But some private researchers suggest the current numbers are higher. Local media reported that the Tokyo government pushed many of them out of Ueno Park and other tourist attractions to prepare for the 2020 Tokyo Olympics, now postponed until 2021, though officials deny they were displaced.</p> 
+  <p>Yu’s own connection to Fukushima, where she moved in 2015, runs deep. Her mother, a refugee from the Korean War who fled to Japan from South Korea in a small boat, landed in a village in Fukushima that was eventually flooded by a dam that served as a source of hydropower for Tokyo.</p>
+  <p>As an ethnic Korean — known in Japan as Zainichi — from a poor family, she was bullied in school. Classmates called her a “germ” and would refuse to eat lunch when it was her turn to serve the food. She recalls that a teacher, apparently offended by her shyness, demanded to know: “Can’t you speak Japanese?”
+
+  Literature became a refuge, particularly Edgar Allan Poe, Fyodor Dostoyevsky, William Faulkner and Truman Capote. “Books were the escape room for my soul,” Yu said, and she often used them to conceal her face from classmates.
+  
+  Because of the discrimination and poverty she experienced, she identifies with the struggles of her fictional characters. “When I was a child, I didn’t belong anywhere,” she said. “So I feel like that’s what I am writing about when I write about homeless people or people on the edge of society.”</p>
+</div>
   <div class="skewed-section">
     <div class="inner-scroll">
       <p>“I am the ghost of someone who was never really seen.”</p>

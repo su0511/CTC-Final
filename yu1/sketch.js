@@ -33,7 +33,7 @@ class Ball {
 
 function setup() {
     const canvas = createCanvas(windowWidth, windowHeight);
-    canvas.parent('container'); // Make the canvas inside the container.
+    canvas.parent('container'); 
     background("#697F41");
 
     for (let x = 0; x < width; x += 50) {
@@ -64,6 +64,6 @@ function enterSite() {
     const intro = document.getElementById('intro-screen');
     intro.classList.add('fade-out');
     setTimeout(() => {
-      window.location.href = "second.html"; // 可替换为内部锚点或内容切换
-    }, 1000); // 与 CSS 动画时间一致
+      window.location.href = "second.html"; 
+    }, 1000);
   }

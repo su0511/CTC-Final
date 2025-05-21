@@ -142,17 +142,17 @@ function setupInstruction() {
   instructionTimeout = setTimeout(() => {
     fadeInInstruction();
     instructionFadeTimeout = setTimeout(fadeOutInstruction, 5000);
-  },2000);
+  },1200);
 }
 
 function fadeInInstruction() {
   let start = null;
-  const duration = 1000; 
+  let duration = 1000; 
   
-  const animate = (timestamp) => {
+  let animate = (timestamp) => {
     if (!start) start = timestamp;
-    const progress = timestamp - start;
-    const opacity = Math.min(progress / duration, 1);
+    let progress = timestamp - start;
+    let opacity = Math.min(progress / duration, 1);
     
     instructionElement.style.opacity = opacity;
     if (progress < duration) {
@@ -165,12 +165,12 @@ function fadeInInstruction() {
 
 function fadeOutInstruction() {
   let start = null;
-  const duration = 1000; 
+  let duration = 1000; 
   
   const animate = (timestamp) => {
     if (!start) start = timestamp;
-    const progress = timestamp - start;
-    const opacity = Math.max(1 - (progress / duration), 0);
+    let progress = timestamp - start;
+    let opacity = Math.max(1 - (progress / duration), 0);
     
     instructionElement.style.opacity = opacity;
     

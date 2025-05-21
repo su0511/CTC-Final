@@ -16,7 +16,7 @@ let hasLooped = false;
 let ebFont;
 
 function preload() {
-  ebFont = loadFont('EBGaramond-VariableFont_wght.ttf'); // 确保路径正确
+  ebFont = loadFont('EBGaramond-VariableFont_wght.ttf'); 
 }
 
 function setup() {
@@ -142,12 +142,12 @@ function setupInstruction() {
   instructionTimeout = setTimeout(() => {
     fadeInInstruction();
     instructionFadeTimeout = setTimeout(fadeOutInstruction, 5000);
-  }, 10000);
+  },2000);
 }
 
 function fadeInInstruction() {
   let start = null;
-  const duration = 400; 
+  const duration = 1000; 
   
   const animate = (timestamp) => {
     if (!start) start = timestamp;
@@ -165,7 +165,7 @@ function fadeInInstruction() {
 
 function fadeOutInstruction() {
   let start = null;
-  const duration = 400; 
+  const duration = 1000; 
   
   const animate = (timestamp) => {
     if (!start) start = timestamp;
@@ -197,5 +197,5 @@ window.addEventListener('beforeunload', cleanup);
 
 setTimeout(() => {
   document.getElementById("homeButton").classList.add("visible");
-}, 10000);
+}, 6000);
 

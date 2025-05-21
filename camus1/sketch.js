@@ -147,7 +147,7 @@ function setupInstruction() {
 
 function fadeInInstruction() {
   let start = null;
-  const duration = 1000; 
+  const duration = 400; 
   
   const animate = (timestamp) => {
     if (!start) start = timestamp;
@@ -165,7 +165,7 @@ function fadeInInstruction() {
 
 function fadeOutInstruction() {
   let start = null;
-  const duration = 1000; 
+  const duration = 400; 
   
   const animate = (timestamp) => {
     if (!start) start = timestamp;
@@ -197,5 +197,5 @@ window.addEventListener('beforeunload', cleanup);
 
 setTimeout(() => {
   document.getElementById("homeButton").classList.add("visible");
-}, 20000);
+}, 10000);
 

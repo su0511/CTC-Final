@@ -142,7 +142,7 @@ function setupInstruction() {
   instructionTimeout = setTimeout(() => {
     fadeInInstruction();
     instructionFadeTimeout = setTimeout(fadeOutInstruction, 5000);
-  },1200);
+  },120);
 }
 
 function fadeInInstruction() {

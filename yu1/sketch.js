@@ -13,13 +13,10 @@ class Ball {
 
     update() {
         this.p.add(this.v);
-        this.v.add(this.a);
         this.r *= 0.96;
-        this.v.mult(0.99);
 
-        this.v.x = map(random(-1, 1), 0, 1, -1, 1);
-        this.v.y = map(random(-1, 1), 0, 1, -1, 1);
-
+        // Random jitter in [-1, 1] each frame, rotated by this ball's fixed angle
+        this.v.set(random(-1, 1), random(-1, 1));
         this.v.rotate(this.rotateFactor);
     }
 

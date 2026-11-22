@@ -91,7 +91,7 @@ text(quotes[currentQuoteIndex], quoteX, quoteY, quoteBoxWidth);
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
     let prev = p.pos.copy();
-    let n = noise(p.pos.x * noiseScale, p.pos.y * noiseScale, frameCount / noiseScale);
+    let n = noise(p.pos.x * noiseScale, p.pos.y * noiseScale, frameCount * noiseScale);
     let a = TWO_PI * n;
     p.pos.x += sin(a * random(1, 1.2));
     p.pos.y += cos(a) * map(sin(a / 10), -1, 1, -0.5, 0.5);

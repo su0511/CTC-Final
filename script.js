@@ -33,11 +33,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   init();
   animate();
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    init();
-  });
 
   let pieces = document.querySelectorAll('.piece');
 
